@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#p1").mouseenter(function(){
+        alert("You entered p1!");
+    });
+
+    $("#p2").mouseenter(function(){
+        alert("mouse leave!");
+    });
+
+    $("#p3").mouseenter(function(){
+        alert("mouse down!");
+    });
+
+});
+</script>
+</head>
+<body>
+    
+    <p id="p1">Eneter this paragrap.</p>
+
+    <hr>
+
+    <p id="p2">Mouse leave!!</p>
+
+    <hr>
+
+    <p id="p3">Moune down!</p>
+
+</body>
+</html>
