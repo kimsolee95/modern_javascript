@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>top page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        //promise 순서 이해하기
+
+        function promise_function() {
+            return new Promise(function(resolve, reject) {
+                $.ajax({
+                    url: 'http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99',
+                    data: {},
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(result){
+                        console.log(result);
+                        resolve();
+                    }
+                });
+            });
+        }
+
+        function firstAjax(num) {
+            return new Promise(function(resolve, reject){
+                alert('step 1 실행');
+                $.ajax({
+                    url: 'http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99',
+                    data: {},
+                    type: 'GET',
+                    success: function(result) {
+                        console.log('step1실행');
+                        resolve();
+                    }
+                });
+            });
+        }
+
+        function secondAjax() {
+            return new Promise(function(resolve, reject) {
+                alert('step 2 실행');
+                $.ajax({
+                    url: 'http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99',
+                    data: {},
+                    type: 'GET',
+                    success: function(result) {
+                        console.log('step 2 실행');
+                        resolve(resolve);
+                    }
+                });
+            });
+        }
+
+        function successFunction() {
+            alert('All steps 성공');
+            return flase;
+        }
+
+        function errorFunction() {
+            alert('steps 실패');
+            return false;
+        }
+
+        promise_function()
+        .then(firstAjax)
+        .then(secondAjax)
+        .then(successFunction)
+        .catch(errorFunction);
+
+
+    </script>
+</head>
+<body>
+
+    
+
+</body>
+</html>
